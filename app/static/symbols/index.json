@@ -1,0 +1,464 @@
+{
+  "tabs": [
+    "Locations",
+    "Loot",
+    "Symbols"
+  ],
+  "items": [
+    {
+      "id": "map_arroweast",
+      "sym": "ArrowEast",
+      "tab": "Locations"
+    },
+    {
+      "id": "map_arrownorth",
+      "sym": "ArrowNorth",
+      "tab": "Locations"
+    },
+    {
+      "id": "map_arrowsouth",
+      "sym": "ArrowSouth",
+      "tab": "Locations"
+    },
+    {
+      "id": "map_arrowwest",
+      "sym": "ArrowWest",
+      "tab": "Locations"
+    },
+    {
+      "id": "map_arrownorthwest",
+      "sym": "ArrowNorthWest",
+      "tab": "Locations"
+    },
+    {
+      "id": "map_arrownortheast",
+      "sym": "ArrowNorthEast",
+      "tab": "Locations"
+    },
+    {
+      "id": "map_arrowsouthwest",
+      "sym": "ArrowSouthWest",
+      "tab": "Locations"
+    },
+    {
+      "id": "map_arrowsoutheast",
+      "sym": "ArrowSouthEast",
+      "tab": "Locations"
+    },
+    {
+      "id": "map_apple",
+      "sym": "Apple",
+      "tab": "Loot"
+    },
+    {
+      "id": "map_asterisk",
+      "sym": "Asterisk",
+      "tab": "Symbols"
+    },
+    {
+      "id": "map_axe",
+      "sym": "Axe",
+      "tab": "Loot"
+    },
+    {
+      "id": "map_boat",
+      "sym": "Boat",
+      "tab": "Loot"
+    },
+    {
+      "id": "map_burger",
+      "sym": "Burger",
+      "tab": "Loot"
+    },
+    {
+      "id": "map_checkmark",
+      "sym": "Checkmark",
+      "tab": "Symbols"
+    },
+    {
+      "id": "map_club",
+      "sym": "Club",
+      "tab": "Symbols"
+    },
+    {
+      "id": "map_diamond",
+      "sym": "Diamond",
+      "tab": "Symbols"
+    },
+    {
+      "id": "map_heart",
+      "sym": "Heart",
+      "tab": "Symbols"
+    },
+    {
+      "id": "map_spade",
+      "sym": "Spade",
+      "tab": "Symbols"
+    },
+    {
+      "id": "map_cross",
+      "sym": "Cross",
+      "tab": "Symbols"
+    },
+    {
+      "id": "map_dollarsign",
+      "sym": "DollarSign",
+      "tab": "Loot"
+    },
+    {
+      "id": "map_exclamation",
+      "sym": "Exclamation",
+      "tab": "Symbols"
+    },
+    {
+      "id": "map_facedead",
+      "sym": "FaceDead",
+      "tab": "Symbols"
+    },
+    {
+      "id": "map_facehappy",
+      "sym": "FaceHappy",
+      "tab": "Symbols"
+    },
+    {
+      "id": "map_facesad",
+      "sym": "FaceSad",
+      "tab": "Symbols"
+    },
+    {
+      "id": "map_firet",
+      "sym": "Fire",
+      "tab": "Symbols"
+    },
+    {
+      "id": "map_fish",
+      "sym": "Fish",
+      "tab": "Loot"
+    },
+    {
+      "id": "map_garbage",
+      "sym": "Garbage",
+      "tab": "Loot"
+    },
+    {
+      "id": "map_gears",
+      "sym": "Gears",
+      "tab": "Loot"
+    },
+    {
+      "id": "map_gun",
+      "sym": "Gun",
+      "tab": "Loot"
+    },
+    {
+      "id": "map_house",
+      "sym": "House",
+      "tab": "Locations"
+    },
+    {
+      "id": "map_knifefork",
+      "sym": "KnifeFork",
+      "tab": "Loot"
+    },
+    {
+      "id": "map_leaf",
+      "sym": "Leaf",
+      "tab": "Symbols"
+    },
+    {
+      "id": "map_lightning",
+      "sym": "Lightning",
+      "tab": "Symbols"
+    },
+    {
+      "id": "map_lock",
+      "sym": "Lock",
+      "tab": "Locations"
+    },
+    {
+      "id": "map_medcross",
+      "sym": "MedCross",
+      "tab": "Locations"
+    },
+    {
+      "id": "map_moon",
+      "sym": "Moon",
+      "tab": "Symbols"
+    },
+    {
+      "id": "map_o",
+      "sym": "Circle",
+      "tab": "Symbols"
+    },
+    {
+      "id": "map_pill",
+      "sym": "Pill",
+      "tab": "Loot"
+    },
+    {
+      "id": "map_question",
+      "sym": "Question",
+      "tab": "Symbols"
+    },
+    {
+      "id": "map_radiation",
+      "sym": "Radiation",
+      "tab": "Symbols"
+    },
+    {
+      "id": "map_skull",
+      "sym": "Skull",
+      "tab": "Symbols"
+    },
+    {
+      "id": "map_star",
+      "sym": "Star",
+      "tab": "Symbols"
+    },
+    {
+      "id": "map_sun",
+      "sym": "Sun",
+      "tab": "Symbols"
+    },
+    {
+      "id": "map_target",
+      "sym": "Target",
+      "tab": "Locations"
+    },
+    {
+      "id": "map_tent",
+      "sym": "Tent",
+      "tab": "Locations"
+    },
+    {
+      "id": "map_trap",
+      "sym": "Trap",
+      "tab": "Locations"
+    },
+    {
+      "id": "map_waves",
+      "sym": "Waves",
+      "tab": "Locations"
+    },
+    {
+      "id": "map_wrench",
+      "sym": "Wrench",
+      "tab": "Loot"
+    },
+    {
+      "id": "map_x",
+      "sym": "X",
+      "tab": "Locations"
+    },
+    {
+      "id": "map_z",
+      "sym": "Z",
+      "tab": "Locations"
+    },
+    {
+      "id": "map_vhs",
+      "sym": "VHS",
+      "tab": "Loot"
+    },
+    {
+      "id": "map_triangle",
+      "sym": "Triangle",
+      "tab": "Symbols"
+    },
+    {
+      "id": "map_tree",
+      "sym": "Tree",
+      "tab": "Locations"
+    },
+    {
+      "id": "map_tire",
+      "sym": "Tire",
+      "tab": "Loot"
+    },
+    {
+      "id": "map_steeringwheel",
+      "sym": "SteeringWheel",
+      "tab": "Loot"
+    },
+    {
+      "id": "map_snowflake",
+      "sym": "Snowflake",
+      "tab": "Symbols"
+    },
+    {
+      "id": "map_skyscraper",
+      "sym": "Skyscraper",
+      "tab": "Locations"
+    },
+    {
+      "id": "map_shirt",
+      "sym": "Shirt",
+      "tab": "Loot"
+    },
+    {
+      "id": "map_sheep",
+      "sym": "Sheep",
+      "tab": "Symbols"
+    },
+    {
+      "id": "map_rabbit",
+      "sym": "Rabbit",
+      "tab": "Symbols"
+    },
+    {
+      "id": "map_cow",
+      "sym": "Cow",
+      "tab": "Symbols"
+    },
+    {
+      "id": "map_deer",
+      "sym": "Deer",
+      "tab": "Symbols"
+    },
+    {
+      "id": "map_pig",
+      "sym": "Pig",
+      "tab": "Symbols"
+    },
+    {
+      "id": "map_chicken",
+      "sym": "Chicken",
+      "tab": "Symbols"
+    },
+    {
+      "id": "map_rodent",
+      "sym": "Rodent",
+      "tab": "Symbols"
+    },
+    {
+      "id": "map_raccoon",
+      "sym": "Raccoon",
+      "tab": "Symbols"
+    },
+    {
+      "id": "map_turkey",
+      "sym": "Turkey",
+      "tab": "Symbols"
+    },
+    {
+      "id": "map_bird",
+      "sym": "Bird",
+      "tab": "Symbols"
+    },
+    {
+      "id": "map_police",
+      "sym": "Police",
+      "tab": "Locations"
+    },
+    {
+      "id": "map_pawprint",
+      "sym": "Pawprint",
+      "tab": "Locations"
+    },
+    {
+      "id": "map_lightbulb",
+      "sym": "Lightbulb",
+      "tab": "Loot"
+    },
+    {
+      "id": "map_ladder",
+      "sym": "Ladder",
+      "tab": "Locations"
+    },
+    {
+      "id": "map_knife",
+      "sym": "Knife",
+      "tab": "Loot"
+    },
+    {
+      "id": "map_key",
+      "sym": "Key",
+      "tab": "Loot"
+    },
+    {
+      "id": "map_heartbroken",
+      "sym": "Heartbroken",
+      "tab": "Symbols"
+    },
+    {
+      "id": "map_hammer",
+      "sym": "Hammer",
+      "tab": "Loot"
+    },
+    {
+      "id": "map_furnace",
+      "sym": "Furnace",
+      "tab": "Locations"
+    },
+    {
+      "id": "map_fuel",
+      "sym": "Fuel",
+      "tab": "Loot"
+    },
+    {
+      "id": "map_flower",
+      "sym": "Flower",
+      "tab": "Loot"
+    },
+    {
+      "id": "map_eye",
+      "sym": "Eye",
+      "tab": "Symbols"
+    },
+    {
+      "id": "map_egg",
+      "sym": "Egg",
+      "tab": "Loot"
+    },
+    {
+      "id": "map_door",
+      "sym": "Door",
+      "tab": "Locations"
+    },
+    {
+      "id": "map_crossedswords",
+      "sym": "CrossedSwords",
+      "tab": "Locations"
+    },
+    {
+      "id": "map_columns",
+      "sym": "Columns",
+      "tab": "Locations"
+    },
+    {
+      "id": "map_bullets",
+      "sym": "Bullets",
+      "tab": "Loot"
+    },
+    {
+      "id": "map_book",
+      "sym": "Book",
+      "tab": "Locations"
+    },
+    {
+      "id": "map_bomb",
+      "sym": "Bomb",
+      "tab": "Loot"
+    },
+    {
+      "id": "map_bed",
+      "sym": "Bed",
+      "tab": "Locations"
+    },
+    {
+      "id": "map_baseball",
+      "sym": "Baseball",
+      "tab": "Loot"
+    },
+    {
+      "id": "map_armor",
+      "sym": "Armor",
+      "tab": "Loot"
+    },
+    {
+      "id": "map_anvil",
+      "sym": "Anvil",
+      "tab": "Loot"
+    }
+  ]
+}

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>肯塔基地图</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Sans+TC:wght@600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="vendor/leaflet.css" />
+  <link rel="stylesheet" href="styles/main.css?v=70" />
+</head>
+<body>
+  <aside id="sidebar">
+    <div class="side-head">
+      <div class="side-head-row">
+        <h1 data-i18n="app.name">肯塔基 B42.20.3</h1>
+        <div id="lang" class="lang">
+          <button type="button" data-lang="zh">中文</button>
+          <button type="button" data-lang="en">English</button>
+        </div>
+      </div>
+      <input id="search" type="search" data-i18n-placeholder="app.search" placeholder="搜索" autocomplete="off" />
+      <div id="layers" class="layers">
+        <label><input type="checkbox" id="layer-streets" checked /> <span data-i18n="layer.streets">路名</span></label>
+        <label><input type="checkbox" id="layer-notes" checked /> <span data-i18n="layer.notes">备注</span></label>
+        <span class="layer-notes-io">
+          <button type="button" id="note-export" data-i18n="folder.export">导出</button>
+          <button type="button" id="note-import" data-i18n="folder.import">导入</button>
+          <input id="note-file" type="file" accept="application/json" hidden />
+        </span>
+      </div>
+    </div>
+    <section id="panel-towns" class="side-panel">
+      <div class="twist-row panel-head">
+        <button type="button" class="twist-label" data-panel="towns" data-i18n="panel.towns">城镇</button>
+        <button type="button" class="twist-caret" data-panel="towns" data-i18n-title="panel.toggle" title="展开/收起"></button>
+      </div>
+      <div class="panel-body">
+        <div id="towns"></div>
+      </div>
+    </section>
+    <div id="panel-split" class="panel-split" aria-hidden="true"></div>
+    <section id="panel-notes" class="side-panel">
+      <div class="twist-row panel-head">
+        <button type="button" class="twist-label" data-panel="notes" data-i18n="panel.notes">备注</button>
+        <button type="button" id="folder-new" class="twist-icon" data-i18n-title="folder.new" title="新建文件夹">
+          <svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true"><path d="M2.8 7.2V5.2h5.2L9.4 7.2H17.2V16H2.8z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </button>
+        <button type="button" class="twist-caret" data-panel="notes" data-i18n-title="panel.toggle" title="展开/收起"></button>
+      </div>
+      <div class="panel-body">
+        <div id="folders"></div>
+      </div>
+    </section>
+    <div id="sidebar-resizer" aria-hidden="true"></div>
+  </aside>
+  <div id="map-wrap">
+    <div id="map"></div>
+    <div id="map-legend" class="map-legend" aria-hidden="true"></div>
+  </div>
+  <div id="note-stack">
+  <div id="note-dock">
+    <div id="note-target"></div>
+    <div id="note-tools">
+      <div class="note-tool active" role="button" tabindex="0" data-tool="pan" data-i18n-title="tool.pan" title="浏览（Esc）">
+        <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 3.2v13.2l3.4-3.2 2 5.1 2.1-.8-2-5.1L15.4 12z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="note-tool" role="button" tabindex="0" data-tool="pin" data-i18n-title="tool.pin" title="点">
+        <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2.8c-2.7 0-4.8 2-4.8 4.6 0 3.4 4.8 9.8 4.8 9.8s4.8-6.4 4.8-9.8c0-2.6-2.1-4.6-4.8-4.6z" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="7.4" r="1.6" fill="currentColor"/></svg>
+      </div>
+      <div class="note-tool" role="button" tabindex="0" data-tool="stamp" data-i18n-title="tool.stamp" title="图章">
+        <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><rect x="4.2" y="6.2" width="11.6" height="9.2" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M7 6.2V4.6h6v1.6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M7.2 10.2h5.6M7.2 12.6h3.4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <div class="note-tool" role="button" tabindex="0" data-tool="brush" data-i18n-title="tool.brush" title="笔刷">
+        <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 16.2c2.2 0 3.1-1.1 4.1-2.6L15.2 4.2l1.6 1.6-7 9.5c-1.1 1.5-2.4 2-4.8 2z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M13.6 3.4l3 3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <div class="note-tool" role="button" tabindex="0" data-tool="rect" data-i18n-title="tool.rect" title="矩形">
+        <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><rect x="3.5" y="5" width="13" height="10" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+      </div>
+      <div class="note-tool" role="button" tabindex="0" data-tool="circle" data-i18n-title="tool.circle" title="圆">
+        <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.2" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+      </div>
+      <div class="note-tool" role="button" tabindex="0" data-tool="arrow" data-i18n-title="tool.arrow" title="箭头">
+        <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 15.5L12.2 7.3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M16.2 3.8L10.4 5.6l4.2 4.2z" fill="currentColor"/></svg>
+      </div>
+      <div class="note-tool" role="button" tabindex="0" data-tool="text" data-i18n-title="tool.text" title="文字">
+        <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M5.2 5.2h9.6M10 5.2v10M6.8 15.2h6.4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+    </div>
+    <div class="note-dock-split"></div>
+    <div id="note-draw-colors" class="color-row"></div>
+    <div id="note-draw-rgb" class="note-rgb">
+      <span data-i18n="color.value">色值</span>
+      <input class="note-rgb-val" type="text" spellcheck="false" maxlength="7" title="#RRGGBB" />
+      <input class="note-rgb-pick" type="color" value="#c4bfb4" data-i18n-title="color.pick" title="取色" />
+      <button type="button" class="note-rgb-drop" data-i18n-title="color.dropper" title="吸管">
+        <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13.5l2.6-2.6 5.4-5.4a1.5 1.5 0 0 1 2.1 2.1L7.7 13 5 13.5H3z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M9.4 3.6l3 3" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div id="note-sym-panel" hidden>
+      <div class="sym-tabs"></div>
+      <div class="sym-grid"></div>
+    </div>
+  </div>
+  </div>
+  <template id="note-pop-tpl">
+    <div class="note-pop">
+      <div class="note-pop-head">
+        <strong data-i18n="note.pop">备注</strong>
+        <span class="note-xy"></span>
+        <button type="button" class="note-close" data-i18n="note.close">关闭</button>
+      </div>
+      <input class="note-title" type="text" data-i18n-placeholder="note.title" placeholder="标题" maxlength="80" />
+      <div class="note-colors color-row"></div>
+      <div class="note-rgb">
+        <span data-i18n="color.value">色值</span>
+        <input class="note-rgb-val" type="text" spellcheck="false" maxlength="7" title="#RRGGBB" />
+        <input class="note-rgb-pick" type="color" value="#c4bfb4" data-i18n-title="color.pick" title="取色" />
+        <button type="button" class="note-rgb-drop" data-i18n-title="color.dropper" title="吸管">
+          <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13.5l2.6-2.6 5.4-5.4a1.5 1.5 0 0 1 2.1 2.1L7.7 13 5 13.5H3z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M9.4 3.6l3 3" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="sym-panel">
+        <button type="button" class="sym-none" data-symbol="" data-i18n="note.none">无</button>
+        <div class="sym-tabs"></div>
+        <div class="sym-grid"></div>
+      </div>
+      <label class="note-folder"><span data-i18n="note.folder">分类</span>
+        <select class="note-folder-select"></select>
+      </label>
+      <div class="note-layer">
+        <span data-i18n="note.layer">图层</span>
+        <button type="button" class="note-layer-down" data-i18n="note.layerDown" data-i18n-title="note.layerDown" title="下移">下移</button>
+        <button type="button" class="note-layer-up" data-i18n="note.layerUp" data-i18n-title="note.layerUp" title="上移">上移</button>
+        <button type="button" class="note-center" hidden data-i18n="note.center" data-i18n-title="note.center" title="居中">居中</button>
+      </div>
+      <label class="note-scale"><span data-i18n="note.size">大小</span>
+        <input class="note-scale-range" type="range" min="6" max="64" step="1" value="12" />
+        <input class="note-scale-num" type="number" min="6" max="64" step="1" value="12" />
+        <span>px</span>
+      </label>
+      <textarea class="note-body" rows="5" data-i18n-placeholder="note.body" placeholder="详情"></textarea>
+      <div class="note-pop-actions">
+        <button type="button" class="note-del" data-i18n="note.delete">删除</button>
+      </div>
+    </div>
+  </template>
+  <div id="note-pops"></div>
+  <div id="coords">x —, y — · zoom —</div>
+  <div id="note-tip" hidden></div>
+  <div id="pick-hud" hidden>
+    <canvas id="pick-loupe" width="88" height="88"></canvas>
+    <div class="pick-meta">
+      <span id="pick-swatch"></span>
+      <span id="pick-hex"></span>
+      <span id="pick-xy"></span>
+    </div>
+  </div>
+  <div id="note-ctx" hidden>
+    <div class="note-ctx-label" data-i18n="ctx.add">添加备注</div>
+    <button type="button" data-act="add-pin" data-i18n="tool.pin">点</button>
+    <button type="button" data-act="add-stamp" data-i18n="tool.stamp">图章</button>
+    <button type="button" data-act="add-text" data-i18n="tool.text">文字</button>
+    <button type="button" data-act="add-rect" data-i18n="tool.rect">矩形</button>
+    <button type="button" data-act="add-circle" data-i18n="tool.circle">圆</button>
+    <button type="button" data-act="add-arrow" data-i18n="tool.arrow">箭头</button>
+    <button type="button" data-act="add-brush" data-i18n="tool.brush">笔刷</button>
+    <button type="button" data-act="delete" data-i18n="ctx.delete">删除备注</button>
+    <div class="note-ctx-split"></div>
+    <button type="button" data-act="copy" data-i18n="ctx.copy">复制</button>
+    <button type="button" data-act="cut" data-i18n="ctx.cut">剪切</button>
+    <button type="button" data-act="paste" data-i18n="ctx.paste">粘贴</button>
+  </div>
+  <div id="ui-toast" hidden></div>
+  <div id="ui-modal" hidden>
+    <div class="ui-mask"></div>
+    <div class="ui-dialog" role="dialog" aria-modal="true">
+      <div id="ui-modal-title" class="ui-dialog-title"></div>
+      <p id="ui-modal-body" class="ui-dialog-body"></p>
+      <input id="ui-modal-input" type="text" maxlength="40" hidden />
+      <div class="ui-dialog-actions">
+        <button type="button" id="ui-modal-cancel" data-i18n="modal.cancel">取消</button>
+        <button type="button" id="ui-modal-ok" data-i18n="modal.ok">确定</button>
+      </div>
+    </div>
+  </div>
+  <script src="vendor/leaflet.js"></script>
+  <script type="module" src="main.js?v=70"></script>
+</body>
+</html>

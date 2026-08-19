@@ -1,0 +1,32 @@
+#ui-toast {
+  position: fixed; top: 18px; left: 50%; z-index: 960;
+  transform: translateX(-50%);
+  padding: 8px 16px; border-radius: 4px;
+  background: #161910; color: #e8e4d4; border: 1px solid #3a4234;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4); font-size: 13px;
+  pointer-events: none;
+}
+#ui-modal {
+  position: fixed; inset: 0; z-index: 900;
+  display: flex; align-items: center; justify-content: center;
+}
+#ui-modal[hidden] { display: none; }
+.ui-mask { position: absolute; inset: 0; background: rgba(0,0,0,0.45); }
+.ui-dialog {
+  position: relative; width: 320px; max-width: calc(100vw - 32px);
+  background: #161910; border: 1px solid #3a4234; border-radius: 6px;
+  padding: 14px; box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+}
+.ui-dialog-title { font-size: 14px; font-weight: 600; margin: 0 0 10px; }
+.ui-dialog-body { margin: 0 0 12px; font-size: 13px; color: #c8d4b0; line-height: 1.5; }
+#ui-modal-input {
+  width: 100%; margin: 0 0 12px; padding: 6px 8px;
+  background: #1e2219; color: #e8e4d4; border: 1px solid #3a4234; border-radius: 4px;
+  font: inherit;
+}
+.ui-dialog-actions { display: flex; justify-content: flex-end; gap: 8px; }
+.ui-dialog-actions button {
+  padding: 4px 12px; cursor: pointer; background: #1e2219; color: #d4d0c0;
+  border: 1px solid #3a4234; border-radius: 4px;
+}
+#ui-modal-ok { border-color: #5a6a48; color: #e8e4d4; }

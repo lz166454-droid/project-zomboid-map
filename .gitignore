@@ -1,0 +1,14 @@
+.DS_Store
+Thumbs.db
+*.log
+__pycache__/
+.venv/
+.cursor/
+/note/
+_extract_i18n.py
+copy-map-data.ps1
+install-pzmap.ps1
+bin/
+node_modules/
+dist/
+

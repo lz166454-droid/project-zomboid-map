@@ -1,0 +1,54 @@
+.leaflet-container.picking-color { cursor: crosshair; }
+#pick-hud {
+  position: fixed; z-index: 970; pointer-events: none;
+  display: flex; align-items: stretch; gap: 8px;
+  background: rgba(18, 20, 15, 0.94); color: #e8e4d4;
+  border: 1px solid #3a4234; border-radius: 4px; padding: 6px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.45); font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+#pick-hud[hidden] { display: none; }
+#pick-loupe {
+  width: 88px; height: 88px; flex: none;
+  image-rendering: pixelated; image-rendering: crisp-edges;
+  background: #12140f; border: 1px solid #3a4234;
+}
+.pick-meta { display: flex; flex-direction: column; justify-content: center; gap: 6px; min-width: 7.2em; }
+#pick-swatch {
+  width: 28px; height: 28px; border: 1px solid #e8e4d4; border-radius: 2px;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.35);
+}
+#pick-hex { color: #e8e4d4; letter-spacing: 0.02em; }
+#pick-xy { color: #a8b094; }
+.color-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+.color-row button {
+  width: 18px; height: 18px; border-radius: 50%; cursor: pointer;
+  border: 2px solid transparent; padding: 0;
+}
+.color-row button.active { border-color: #e8e4d4; }
+.note-rgb {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 12px; color: #a8b094; margin: 0 0 8px;
+}
+#note-draw-rgb { margin: 6px 0 0; width: 100%; }
+#note-draw-rgb .note-rgb-val { flex: 1; width: auto; min-width: 4.8em; }
+.note-rgb-val {
+  width: 5.6em; flex: none; padding: 2px 4px; text-align: center;
+  background: #1e2219; color: #e8e4d4; border: 1px solid #3a4234; border-radius: 4px; font: inherit;
+}
+.note-rgb-pick {
+  width: 22px; height: 22px; flex: none; padding: 0; cursor: pointer;
+  background: none; border: 2px solid #3a4234; border-radius: 4px;
+  overflow: hidden;
+}
+.note-rgb-pick::-webkit-color-swatch-wrapper { padding: 0; }
+.note-rgb-pick::-webkit-color-swatch { border: none; }
+.note-rgb-pick::-moz-color-swatch { border: none; }
+.note-rgb.custom-active .note-rgb-pick { border-color: #e8e4d4; }
+.note-rgb-drop {
+  width: 22px; height: 22px; flex: none; padding: 0; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  background: #1e2219; color: #a8b094; border: 1px solid #3a4234; border-radius: 4px;
+}
+.note-rgb-drop:hover, .note-rgb-drop.active { color: #e8e4d4; border-color: #5a6a48; }
+.note-rgb-drop svg { display: block; }

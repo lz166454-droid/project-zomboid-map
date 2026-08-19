@@ -1,0 +1,51 @@
+{
+  "name": "mapweb",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Project Zomboid 肯塔基纸质地图",
+  "author": "lz166454-droid",
+  "type": "module",
+  "main": "app.js",
+  "license": "SEE LICENSE IN LICENSE",
+  "scripts": {
+    "start": "node app.js",
+    "desktop": "electron desktop.js",
+    "dist": "electron-builder --win portable"
+  },
+  "build": {
+    "appId": "local.mapweb.paper",
+    "productName": "PZ纸质地图",
+    "artifactName": "${productName}-${version}.${ext}",
+    "files": [
+      "desktop.js",
+      "app.js",
+      "app/**/*"
+    ],
+    "extraMetadata": {
+      "main": "desktop.js"
+    },
+    "asarUnpack": [
+      "app/data/**/*"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "portable": {
+      "unpackDirName": "PZPaperMap"
+    }
+  },
+  "devDependencies": {
+    "electron": "^43.4.1",
+    "electron-builder": "^26.15.3"
+  }
+}
