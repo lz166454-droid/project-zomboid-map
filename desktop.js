@@ -1,5 +1,5 @@
 import { app, BrowserWindow, Menu } from "electron";
-import { Application, PORT } from "./app.js";
+import { Application } from "./app.js";
 
 let win = null;
 const application = new Application();
@@ -25,7 +25,7 @@ function createWindow() {
   win.on("closed", () => {
     win = null;
   });
-  win.loadURL("http://127.0.0.1:" + PORT + "/");
+  win.loadURL("http://127.0.0.1:" + application.port + "/");
 }
 
 const locked = app.requestSingleInstanceLock();
