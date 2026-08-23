@@ -401,7 +401,7 @@ export class MapSession {
       sizeCanvas(vecCanvas, vecCtx, size);
       const zf = map.getZoom();
       const feats = data.features || {};
-      if (zf >= 14.9) {
+      if (zf >= POLY[0].minZ) {
         const box = visibleCellKeys(150);
         fetchForest(box);
         fillPolys(vecCtx, forestCache, evalFill(POLY[0].fills, zf));
